@@ -2,7 +2,7 @@
 
 ## 1 lvl deep JSON files
 
-[(https://asciinema.org/a/bGfbneK6Po4KcoLeJXo4hGTQW.svg)](https://asciinema.org/a/bGfbneK6Po4KcoLeJXo4hGTQW)
+[![asciicast](https://asciinema.org/a/bGfbneK6Po4KcoLeJXo4hGTQW.svg)](https://asciinema.org/a/bGfbneK6Po4KcoLeJXo4hGTQW)
 
 ### Hexlet tests and linter status
 
