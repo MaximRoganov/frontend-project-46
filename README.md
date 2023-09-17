@@ -11,6 +11,7 @@
 ### [Github actions] Test check
 
 [![GitHub Actions Demo](https://github.com/MaximRoganov/frontend-project-46/actions/workflows/github-actions-demo.yml/badge.svg)](https://github.com/MaximRoganov/frontend-project-46/actions/workflows/github-actions-demo.yml)
+
 ### Codeclimate
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/de6f9fea452bd622994a/maintainability)](https://codeclimate.com/github/MaximRoganov/frontend-project-46/maintainability)

@@ -61,9 +61,6 @@ program
       const filteredKeys = keys.filter((item, index) => keys.indexOf(item) === index);
 
       const finalResult = filteredKeys.reduce((accumulator, currentValue) => {
-        if (data1[currentValue] === data2[currentValue]) {
-          return accumulator + makeLine('neutral', currentValue, data1[currentValue]);
-        }
         if (data1[currentValue] !== data2[currentValue]) {
           if (data1[currentValue] === undefined) {
             return accumulator + makeLine('plus', currentValue, data2[currentValue]);
@@ -72,6 +69,7 @@ program
           }
           return accumulator + makeLine('minus', currentValue, data1[currentValue]) + makeLine('plus', currentValue, data2[currentValue]);
         }
+        return accumulator + makeLine('neutral', currentValue, data1[currentValue]);
       }, '');
 
       return makeFinalOutput(finalResult);
