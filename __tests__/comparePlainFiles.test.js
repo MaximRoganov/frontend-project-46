@@ -1,14 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { test, expect } from '@jest/globals';
 import { getDiff } from '../src/comparePlainFiles.js';
-
-import { fileURLToPath } from 'url';
-import { dirname, join  } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
-
+import { getFixturePath } from '../src/utils.js'
 
 const filePath1 = getFixturePath('file1.json');
 const testFile1 = readFileSync(filePath1, 'utf-8');
@@ -29,5 +22,6 @@ test('plain json file', () => {
   + timeout: 20
   + verbose: true
 }`;
+
   expect(diff).toBe(expectedResult);
 });
