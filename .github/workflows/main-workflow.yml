@@ -1,0 +1,21 @@
+name: main-workflow
+on: push
+jobs:
+  linter-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm' # need to speed up deploy
+      - run: make install
+      - run: make lint
+      - run: make test
+      - name: upload code coverage
+        uses: ./.github/actions/cc-test-reporter
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
+        with:
+          subcommand: "upload-coverage"
+      
