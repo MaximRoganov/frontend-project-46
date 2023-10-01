@@ -33,4 +33,4 @@ const getDiff = (data1, data2) => {
   return makeFinalOutput(finalResult);
 };
 
-export {makeLine, makeFinalOutput, getDiff};
+export { makeLine, makeFinalOutput, getDiff };

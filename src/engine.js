@@ -17,20 +17,18 @@ const gendiff = () => {
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action((filepath1, filepath2) => {
+      const file1 = readFileSync(filepath1, 'utf-8');
+      const parsedFile1 = JSON.parse(file1);
 
+      const file2 = readFileSync(filepath2, 'utf-8');
+      const parsedFile2 = JSON.parse(file2);
 
-    const file1 = readFileSync(filepath1, 'utf-8');
-    const parsedFile1 = JSON.parse(file1);
+      const result = getDiff(parsedFile1, parsedFile2);
+      // logic for 1 level deep files
+      console.log(result);
+    });
 
-    const file2 = readFileSync(filepath2, 'utf-8');
-    const parsedFile2 = JSON.parse(file2);
-
-    const result = getDiff(parsedFile1, parsedFile2);
-    // logic for 1 level deep files
-    console.log(result);
-  });
-
-program.parse();
+  program.parse();
 };
 
 export default gendiff;
