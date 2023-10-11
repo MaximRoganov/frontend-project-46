@@ -1,3 +1,13 @@
+import { readFileSync } from 'node:fs';
+import { extname } from 'node:path';
+import mainParser from './parsers.js';
+
+const getData = (file) => {
+  const fileData = readFileSync(file, 'utf-8');
+  const extension = extname(file);
+  return mainParser(fileData, extension);
+};
+
 const makeLine = (status, key, value) => {
   let finalStr;
   if (status === 'neutral') {
@@ -14,7 +24,10 @@ const makeLine = (status, key, value) => {
 
 const makeFinalOutput = (data) => `{\n${data}}`;
 
-const getDiff = (data1, data2) => {
+const getDiff = (file1, file2) => {
+  const data1 = getData(file1);
+  const data2 = getData(file2);
+
   const keys = [...Object.keys(data1), ...Object.keys(data2)].sort();
   const filteredKeys = keys.filter((item, index) => keys.indexOf(item) === index);
 

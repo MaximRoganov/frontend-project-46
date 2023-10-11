@@ -8,9 +8,9 @@
 
 [![Actions Status](https://github.com/MaximRoganov/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/MaximRoganov/frontend-project-46/actions)
 
-### [Github actions] Test check
+### [Github actions] Eslint + jest tests + codeclimate test coverage hook
 
-[![GitHub Actions Demo](https://github.com/MaximRoganov/frontend-project-46/actions/workflows/github-actions-demo.yml/badge.svg)](https://github.com/MaximRoganov/frontend-project-46/actions/workflows/github-actions-demo.yml)
+[![main-workflow](https://github.com/MaximRoganov/frontend-project-46/actions/workflows/main-workflow.yml/badge.svg)](https://github.com/MaximRoganov/frontend-project-46/actions/workflows/main-workflow.yml)
 
 ### Codeclimate
 
