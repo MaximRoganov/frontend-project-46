@@ -5,12 +5,14 @@ const parseJSON = (data) => JSON.parse(data);
 const parseYAML = (data) => yaml.load(data);
 
 const mainParser = (data, extension) => {
-  if (extension === 'json') {
+  const slicedExtension = extension.slice(1);
+  if (slicedExtension === 'json') {
     return parseJSON(data);
   }
-  if (extension === 'yml' || extension === 'yaml') {
+  if (slicedExtension === 'yml' || slicedExtension === 'yaml') {
     return parseYAML(data);
   }
+
   return false;
 };
 
