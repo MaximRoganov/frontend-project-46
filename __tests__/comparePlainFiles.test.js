@@ -1,8 +1,9 @@
 import { test, expect } from '@jest/globals';
-import { getDiff } from '../src/comparePlainFiles.js';
+import { buildDiff, getData } from '../src/comparePlainFiles.js';
+import stylish from '../src/formatters/stylish.js';
 import getFixturePath from '../src/utils.js';
 
-const expectedResult = `{
+const plainExpectedResult = `{
   - follow: false
     host: hexlet.io
   - proxy: 123.234.53.22
@@ -11,12 +12,79 @@ const expectedResult = `{
   + verbose: true
 }`;
 
+const deepExpectedResult = `{
+  common: {
+    + follow: false
+      setting1: Value 1
+    - setting2: 200
+    - setting3: trueexpectedResult
+    + setting3: null
+    + setting4: blah blah
+    + setting5: {
+          key5: value5
+      }
+      setting6: {
+          doge: {
+            - wow: 
+            + wow: so much
+          }
+          key: value
+        + ops: vops
+      }
+  }
+  group1: {
+    - baz: bas
+    + baz: bars
+      foo: bar
+    - nest: {
+          key: value
+      }
+    + nest: str
+  }
+- group2: {
+      abc: 12345
+      deep: {
+          id: 45
+      }
+  }
++ group3: {
+      deep: {
+          id: {
+              number: 45
+          }
+      }
+      fee: 100500
+  }
+}`;
+
 test('plain json files', () => {
-  const diff = getDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
-  expect(diff).toBe(expectedResult);
+  const data1 = getData(getFixturePath('plain1.json'));
+  const data2 = getData(getFixturePath('plain2.json'));
+  const diff = buildDiff(data1, data2);
+  const styledDiff = stylish(diff);
+  expect(styledDiff).toBe(plainExpectedResult);
 });
 
 test('plain yaml files', () => {
-  const diff = getDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'));
-  expect(diff).toBe(expectedResult);
+  const data1 = getData(getFixturePath('plain1.json'));
+  const data2 = getData(getFixturePath('plain2.json'));
+  const diff = buildDiff(data1, data2);
+  const styledDiff = stylish(diff);
+  expect(styledDiff).toBe(plainExpectedResult);
+});
+
+test('deep json files', () => {
+  const data1 = getData(getFixturePath('plain1.json'));
+  const data2 = getData(getFixturePath('plain2.json'));
+  const diff = buildDiff(data1, data2);
+  const styledDiff = stylish(diff);
+  expect(styledDiff).toBe(deepExpectedResult);
+});
+
+test('deep yaml files', () => {
+  const data1 = getData(getFixturePath('plain1.json'));
+  const data2 = getData(getFixturePath('plain2.json'));
+  const diff = buildDiff(data1, data2);
+  const styledDiff = stylish(diff);
+  expect(styledDiff).toBe(deepExpectedResult);
 });

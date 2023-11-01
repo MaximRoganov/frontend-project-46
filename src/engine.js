@@ -1,5 +1,6 @@
 import { Command } from 'commander';
-import { getDiff } from './comparePlainFiles.js';
+import { buildDiff, getData } from './comparePlainFiles.js';
+import stylish from './formatters/stylish.js';
 
 const gendiff = () => {
   const program = new Command();
@@ -16,9 +17,11 @@ const gendiff = () => {
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action((filepath1, filepath2) => {
-      // TODO need to make options.format as musthave variable
-      const result = getDiff(filepath1, filepath2);
-      console.log(result);
+      const data1 = getData(filepath1);
+      const data2 = getData(filepath2);
+      const rawDiff = buildDiff(data1, data2);
+      const styledDiff = stylish(rawDiff);
+      console.log(styledDiff);
     });
 
   program.parse();
