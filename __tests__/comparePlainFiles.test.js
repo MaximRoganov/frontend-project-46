@@ -13,48 +13,48 @@ const plainExpectedResult = `{
 }`;
 
 const deepExpectedResult = `{
-  common: {
-    + follow: false
-      setting1: Value 1
-    - setting2: 200
-    - setting3: trueexpectedResult
-    + setting3: null
-    + setting4: blah blah
-    + setting5: {
-          key5: value5
-      }
-      setting6: {
-          doge: {
-            - wow: 
-            + wow: so much
-          }
-          key: value
-        + ops: vops
-      }
-  }
-  group1: {
-    - baz: bas
-    + baz: bars
-      foo: bar
-    - nest: {
-          key: value
-      }
-    + nest: str
-  }
-- group2: {
-      abc: 12345
-      deep: {
-          id: 45
-      }
-  }
-+ group3: {
-      deep: {
-          id: {
-              number: 45
-          }
-      }
-      fee: 100500
-  }
+    common: {
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
+    }
+    group1: {
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
+  - group2: {
+        abc: 12345
+        deep: {
+            id: 45
+        }
+    }
+  + group3: {
+        deep: {
+            id: {
+                number: 45
+            }
+        }
+        fee: 100500
+    }
 }`;
 
 test('plain json files', () => {
@@ -66,24 +66,24 @@ test('plain json files', () => {
 });
 
 test('plain yaml files', () => {
-  const data1 = getData(getFixturePath('plain1.json'));
-  const data2 = getData(getFixturePath('plain2.json'));
+  const data1 = getData(getFixturePath('plain1.yaml'));
+  const data2 = getData(getFixturePath('plain2.yaml'));
   const diff = buildDiff(data1, data2);
   const styledDiff = stylish(diff);
   expect(styledDiff).toBe(plainExpectedResult);
 });
 
 test('deep json files', () => {
-  const data1 = getData(getFixturePath('plain1.json'));
-  const data2 = getData(getFixturePath('plain2.json'));
+  const data1 = getData(getFixturePath('deep1.json'));
+  const data2 = getData(getFixturePath('deep2.json'));
   const diff = buildDiff(data1, data2);
   const styledDiff = stylish(diff);
   expect(styledDiff).toBe(deepExpectedResult);
 });
 
 test('deep yaml files', () => {
-  const data1 = getData(getFixturePath('plain1.json'));
-  const data2 = getData(getFixturePath('plain2.json'));
+  const data1 = getData(getFixturePath('deep1.yaml'));
+  const data2 = getData(getFixturePath('deep2.yaml'));
   const diff = buildDiff(data1, data2);
   const styledDiff = stylish(diff);
   expect(styledDiff).toBe(deepExpectedResult);
