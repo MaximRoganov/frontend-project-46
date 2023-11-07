@@ -1,13 +1,4 @@
-import { readFileSync } from 'node:fs';
-import { extname } from 'node:path';
 import _ from 'lodash';
-import mainParser from './parsers.js';
-
-const getData = (file) => {
-  const fileData = readFileSync(file, 'utf-8');
-  const extension = extname(file);
-  return mainParser(fileData, extension);
-};
 
 const buildDiff = (data1, data2) => {
   const keys1 = Object.keys(data1);
@@ -38,4 +29,4 @@ const buildDiff = (data1, data2) => {
   return { type: 'root', children: diff };
 };
 
-export { buildDiff, getData };
+export default buildDiff;
