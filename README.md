@@ -1,8 +1,8 @@
 # gendiff
 
-## 1 lvl deep JSON files
+## Demo
 
-[![asciicast](https://asciinema.org/a/bGfbneK6Po4KcoLeJXo4hGTQW.svg)](https://asciinema.org/a/bGfbneK6Po4KcoLeJXo4hGTQW)
+[![asciicast](https://asciinema.org/a/UfWcVZTrM8JHwwm7EUfwHQ5WR.svg)](https://asciinema.org/a/UfWcVZTrM8JHwwm7EUfwHQ5WR)
 
 ### [Github actions] Hexlet tests and linter status
 

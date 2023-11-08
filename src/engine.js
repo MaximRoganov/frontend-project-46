@@ -4,6 +4,7 @@ import buildDiff from './rawDiffLogic.js';
 import { getData } from './utils.js';
 import stylish from './formatters/stylish.js';
 import plain from './formatters/plain.js';
+import json from './formatters/json.js';
 
 const engine = () => {
   const program = new Command();
@@ -23,7 +24,7 @@ const engine = () => {
       const data1 = getData(filepath1);
       const data2 = getData(filepath2);
       const rawDiff = buildDiff(data1, data2);
-      const listOfFormatters = ['stylish', 'plain'];
+      const listOfFormatters = ['stylish', 'plain', 'json'];
       const defaultFormatter = stylish;
 
       if (!_.includes(listOfFormatters, format)) {
@@ -34,6 +35,9 @@ const engine = () => {
       }
       if (format === 'plain') {
         console.log(plain(rawDiff));
+      }
+      if (format === 'json') {
+        console.log(json(rawDiff));
       }
     });
 
