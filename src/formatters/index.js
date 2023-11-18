@@ -2,7 +2,7 @@ import json from './json.js';
 import plain from './plain.js';
 import stylish from './stylish.js';
 
-const toFormat = (data, formatterType) => {
+const toFormat = (data, formatterType = 'stylish') => {
   switch (formatterType) {
     case 'json':
       return json(data);
