@@ -1,6 +1,24 @@
 # gendiff
+This package compares two files with some tree structured data with several formates and shows the difference between them.
+The difference could be shown as: stylished string, plain string, JSON.
 
 ## Demo
+
+## Get diff between 2 json files
+
+### stylish formatter
+
+### plain formatter
+
+### json formatter
+
+## Get diff between 2 yaml files
+
+### stylish formatter
+
+### plain formatter
+
+### json formatter
 
 [![asciicast](https://asciinema.org/a/UfWcVZTrM8JHwwm7EUfwHQ5WR.svg)](https://asciinema.org/a/UfWcVZTrM8JHwwm7EUfwHQ5WR)
 
